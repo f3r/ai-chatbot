@@ -4,8 +4,8 @@ import { ask } from './services/chatbot'
 import './App.css'
 
 function App() {
-  const [ query, setQuery ] = useState('')
-  const [ answer, setAnswer ] = useState('')
+  const [query, setQuery] = useState('')
+  const [answer, setAnswer] = useState('')
 
   const handleChange = (e) => {
     setQuery(e.target.value)
@@ -18,15 +18,21 @@ function App() {
 
   return (
     <>
-      <h1>Chatbot</h1>
-      <h3>Please insert your query</h3>
-      <input type="text" onChange={handleChange}/>
-      <button onClick={handleClick}>Ask</button>
+      <section className='header'>
+        <h1>Chatbot</h1>
+      </section>
 
-      {
-        answer && 
-        <h3>{answer}</h3>
-      }
+      <section className='messages'>
+        {
+          answer &&
+          <pre>{answer}</pre>
+        }
+      </section>
+
+      <section className='chat'>
+        <input type="text" onChange={handleChange} />
+        <button onClick={handleClick}>Ask me Anything</button>
+      </section>
     </>
   )
 }
